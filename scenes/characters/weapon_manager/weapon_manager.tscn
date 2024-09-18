@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpm0s0sxrj11l"]
+
+[ext_resource type="Script" path="res://scenes/characters/weapon_manager/weapon_manager.gd" id="1_qqw5i"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_skyh2"]
+size = Vector3(0.15, 0.15, 0.15)
+
+[sub_resource type="SphereMesh" id="SphereMesh_outja"]
+radius = 0.15
+height = 0.3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o7ybh"]
+top_radius = 0.15
+bottom_radius = 0.15
+height = 0.15
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_e3cm6"]
+radius = 0.075
+height = 0.3
+
+[node name="WeaponManager" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.319872, -0.253245, -0.682937)
+script = ExtResource("1_qqw5i")
+verbose = null
+
+[node name="Weapons" type="Node3D" parent="."]
+
+[node name="Machete" type="MeshInstance3D" parent="Weapons"]
+visible = false
+mesh = SubResource("BoxMesh_skyh2")
+
+[node name="MachineGun" type="MeshInstance3D" parent="Weapons"]
+visible = false
+mesh = SubResource("SphereMesh_outja")
+
+[node name="Shotgun" type="MeshInstance3D" parent="Weapons"]
+visible = false
+mesh = SubResource("CylinderMesh_o7ybh")
+
+[node name="RocketLauncher" type="MeshInstance3D" parent="Weapons"]
+visible = false
+mesh = SubResource("CapsuleMesh_e3cm6")

@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://purpivp3n1yt"]
+
+[ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_827vo"]
+[ext_resource type="PackedScene" uid="uid://dpm0s0sxrj11l" path="res://scenes/characters/weapon_manager/weapon_manager.tscn" id="2_2aoo4"]
+[ext_resource type="PackedScene" uid="uid://xgc3c7gu2d6f" path="res://scenes/characters/character_mover.tscn" id="2_nkik5"]
+[ext_resource type="PackedScene" uid="uid://bbhuc82n33br8" path="res://scenes/characters/health_manager/health_manager.tscn" id="3_87786"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fxdee"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r8sl6"]
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_827vo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_fxdee")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_r8sl6")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="WeaponManager" parent="Camera3D" instance=ExtResource("2_2aoo4")]
+verbose = true
+
+[node name="CharacterMover" parent="." instance=ExtResource("2_nkik5")]
+
+[node name="HealthManager" parent="." instance=ExtResource("3_87786")]
+verbose = true
